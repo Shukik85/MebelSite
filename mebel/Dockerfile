@@ -1,17 +1,28 @@
-FROM python:3.11.5-alpine3.18
+# pull official base image
+FROM python:3.11.4-slim-buster
 
-COPY requirements.txt /temp/requirements.txt
+# set work directory
+WORKDIR /usr/src/app
 
-RUN pip install -U pip
-RUN pip install -r /temp/requirements.txt
+# set environment variables
+ENV PYTHONDONTWRITEBYTECODE 1
+ENV PYTHONUNBUFFERED 1
 
-COPY mebel /mebel
-WORKDIR /mebel
-EXPOSE 8000
+# install system dependencies
+RUN apt-get update && apt-get install -y netcat
 
-RUN apk update
-RUN apk add postgresql-client build-base postgresql-dev
+# install dependencies
+RUN pip install --upgrade pip
+COPY ./requirements.txt .
+RUN pip install -r requirements.txt
 
-RUN adduser --disabled-password admin
+# copy entrypoint.sh
+COPY ./entrypoint.sh .
+RUN sed -i 's/\r$//g' /usr/src/app/entrypoint.sh
+RUN chmod +x /usr/src/app/entrypoint.sh
 
-USER admin
+# copy project
+COPY . .
+
+# run entrypoint.sh
+ENTRYPOINT ["/usr/src/app/entrypoint.sh"]
