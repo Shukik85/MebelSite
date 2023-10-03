@@ -11,21 +11,42 @@ class WorksAdminForm(forms.ModelForm):
 
     class Meta:
         model = Works
-        fields = '__all__'
+        fields = "__all__"
+
 
 @admin.register(Works)
 class WorksAdmin(admin.ModelAdmin):
     form = WorksAdminForm
-    list_display = ('id', 'created_at', 
-                    'name', 'category', 
-                    'client', 
-                    'admin_photo',
-                    )
-    list_display_links = ('name',)
-    search_fields = ('name', 'category', 'client',)
-    list_filter = ('category', 'created_at',)
-    fields = ('created_at', 'name', 'category', 'description', 'client', 'photos',)
-    readonly_fields = ('admin_photo', 'created_at',)
+    list_display = (
+        "id",
+        "created_at",
+        "name",
+        "category",
+        "client",
+        "admin_photo",
+    )
+    list_display_links = ("name",)
+    search_fields = (
+        "name",
+        "category",
+        "client",
+    )
+    list_filter = (
+        "category",
+        "created_at",
+    )
+    fields = (
+        "created_at",
+        "name",
+        "category",
+        "description",
+        "client",
+        "photos",
+    )
+    readonly_fields = (
+        "admin_photo",
+        "created_at",
+    )
 
     def admin_photo(self, obj):
         photo = obj.get_photo()
@@ -35,16 +56,23 @@ class WorksAdmin(admin.ModelAdmin):
             set_photo += [f'<img src="{src}" width={width}>']
         return mark_safe(set_photo)
 
+
 @admin.register(PhotoWorks)
 class AdminPhoto(admin.ModelAdmin):
-    PHOTO = tuple(f'photo{i}' for i in range(1,7))
-    list_display = ('created_at', 'name', ) + PHOTO
-    list_filter = ('created_at',)
-    fields = ('created_at', 'name', ) + PHOTO
-    readonly_fields = ('created_at',)
+    PHOTO = tuple(f"photo{i}" for i in range(1, 7))
+    list_display = (
+        "created_at",
+        "name",
+    ) + PHOTO
+    list_filter = ("created_at",)
+    fields = (
+        "created_at",
+        "name",
+    ) + PHOTO
+    readonly_fields = ("created_at",)
+
 
 @admin.register(Categoryes)
 class AdminCategory(admin.ModelAdmin):
-    list_display = ('name', )
-    fields = ('name', )
-    
+    list_display = ("name",)
+    fields = ("name",)

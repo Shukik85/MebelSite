@@ -4,10 +4,11 @@ from django import template
 
 register = template.Library()
 
-@register.inclusion_tag('works/inc/_list_categoryes.html')
+
+@register.inclusion_tag("works/inc/_list_categoryes.html")
 def show_categoryes():
     if Categoryes:
-        categoryes = Categoryes.objects.annotate(cnt=Count('works')).filter(cnt__gt=0)
+        categoryes = Categoryes.objects.annotate(cnt=Count("works")).filter(cnt__gt=0)
     else:
         categoryes = []
-    return {'categoryes': categoryes}
+    return {"categoryes": categoryes}
