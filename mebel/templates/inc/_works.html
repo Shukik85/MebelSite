@@ -1,0 +1,67 @@
+{% load static %}
+<div class="container-fluid p-0 m-0 bg-white text-dark" id="works">
+    <div class="d-flex flex-column justify-content-center p-5">
+        <div class="card-header d-flex justify-content-between">
+            <h2 class="card-title text-uppercase" style="font-family: Garamond;">Наши работы</h2>
+            <a class="card-title text-decoration-none btn btn-outline-dark" style="font: bold 16px Open Sans;"
+                href="{% url "works" %}">
+                <b>Посмотреть все работы</b>
+            </a>
+        </div>
+        <div class="works pt-4 custom-grid-wrap" data-template-value='1'>
+            <!-- выбор стиля таблицы data-template-value="[1-4]"
+             выбрать ориентацию картинки data-orient="[hiorizontal|vertical|square-[1-4]]" максимум 6 картинок одинаковые value нельзя -->
+             {% for item in Home.works.all %}
+             {% if item.title == "hr" %}
+            <a class="card" data-orient="horizontal" href="#">
+                <img src="{{item.img.url}}" alt="наши работы" />
+                <div class="card-img-overlay d-flex flex-column justify-content-end">
+                    <h4 class="ps-2" style="font-family: Open Sans;">{% autoescape off %}{{item.description}}{% endautoescape %}</h4>
+                </div>
+            </a>
+            {% endif %}
+            {% if item.title == "vr" %}
+            <a class="card" data-orient="vertical" href="#">
+                <img src="{{item.img.url}}" alt="наши работы" />
+                <div class="card-img-overlay d-flex flex-column justify-content-end">
+                    <h4 class="ps-2" style="font-family: Open Sans;">{% autoescape off %}{{item.description}}{% endautoescape %}</h4>
+                </div>
+            </a>
+            {% endif %}
+            {% if item.title == "sq1" %}
+            <a class="card" data-orient="square-1" href="#">
+                <img src="{{item.img.url}}" alt="наши работы" />
+                <div class="card-img-overlay d-flex flex-column justify-content-end">
+                    <h4 class="ps-2" style="font-family: Open Sans;">{% autoescape off %}{{item.description}}{% endautoescape %}</h4>
+                </div>
+            </a>
+            {% endif %}
+            {% if item.title == "sq2" %}
+            <a class="card" data-orient="square-2" href="#">
+                <img src="{{item.img.url}}" alt="наши работы" />
+                <div class="card-img-overlay d-flex flex-column justify-content-end">
+                    <h4 class="ps-2" style="font-family: Open Sans;">{% autoescape off %}{{item.description}}{% endautoescape %}</h4>
+                </div>
+            </a>
+            {% endif %}
+            {% if item.title == "sq3" %}
+            <a class="card" data-orient="square-3" href="#">
+                <img src="{{item.img.url}}" alt="наши работы" />
+                <div class="card-img-overlay d-flex flex-column justify-content-end">
+                    <h4 class="ps-2" style="font-family: Open Sans;">{% autoescape off %}{{item.description}}{% endautoescape %}</h4>
+                </div>
+            </a>
+            {% endif %}
+            {% if item.title == "sq4" %}
+            <a class="card" data-orient="square-4" href="#">
+                <img src="{{item.img.url}}" alt="наши работы" />
+                <div class="card-img-overlay d-flex flex-column justify-content-end">
+                    <h4 class="ps-2" style="font-family: Open Sans;">{% autoescape off %}{{item.description}}{% endautoescape %}</h4>
+                </div>
+            </a>
+            {% endif %}
+            {% empty %}
+            {% endfor %}
+        </div>
+    </div>
+</div>

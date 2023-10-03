@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+{% load static %}
+{% load cache %}
+<html>
+
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="initial-scale=1, width=device-width" />
+	<link rel="stylesheet" href="{% static 'home/css/custom.min.css'%}" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open Sans:wght@400;600;700&display=swap" />
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Garamond:wght@400&display=swap" />
+	<title>{% block title %}WoodMaster : {{title}}{% endblock %}</title>
+</head>
+
+<body class="d-flex justify-content-center" data-bs-theme="dark">
+	<div class="container-xxl w-100 p-0 m-0">
+		
+			{% block nav %}
+			{% endblock nav %}
+
+			{% block paginator %}
+			{% endblock paginator %}
+
+			{% block sidebar %}
+			{% endblock sidebar %}
+
+			{% block content %}
+			{% endblock content %}
+		
+			{% block offer %}
+			{% endblock %} 
+			
+			{% block info %}
+			{% endblock %}
+			
+			{% block advantage %}
+			{% endblock %}
+			
+			{% block works %}
+			{% endblock %}
+			
+			{% block made %}
+			{% endblock %}
+			
+			{% block partnership %}
+			{% endblock %}
+			
+			{% block accordeon %}
+			{% endblock %}
+			
+			{% block form %}
+			{% endblock %}
+			
+			{% block footer %}
+			{% endblock footer %}
+	</div>
+	<script src="{% static 'home/bootstrap/dist/js/bootstrap.bundle.min.js'%}" crossorigin="anonymous"></script>
+</body>
+
+</html>

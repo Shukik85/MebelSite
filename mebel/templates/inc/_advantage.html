@@ -1,0 +1,16 @@
+{% load static %}
+<div class="container-fluid p-0 m-0" id='importance'>
+    <div class="card-body w-80 p-5">
+        <h2 class="card-title pb-4 text-uppercase" style="font-family: Garamond;">Ценность деревянных изделий из
+            массива</h2>
+        <div class="container text-center row">
+            {% for item in Home.advantage.all %}
+            <div class="col d-flex flex-column justify-content-between align-items-center">
+                <img class="opacity-75" alt="" src="{{item.img.url}}" width="120px"/>
+                {% autoescape off %}{{item.description}}{% endautoescape %}
+            </div>
+            {% empty %}
+            <h2>...</h2>
+            {% endfor %}
+    </div>
+</div>

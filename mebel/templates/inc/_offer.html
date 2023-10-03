@@ -1,0 +1,17 @@
+{% load static %}
+{% for item in Home.offer.all %}
+    <div class="container-fluid text-center p-0 m-0 "
+    style="background-image: url({{item.img.url}}); background-size: cover; min-height: 40vh;">
+    <div class="card-body d-flex justify-content-around flex-column">
+        <div class="card-title d-flex m-5 align-items-center justify-content-center">
+            <h1 class="w-80 text-uppercase" style="font-family: Garamond;">
+                {% autoescape off %}{{item.description}}{% endautoescape %}
+            </h1>
+        </div>
+        <div class="align-self-center m-5" style="font: Open Sans;">
+            <a class='btn btn-outline-light' href='#footer'><b>Заказать изделие</b></a>
+        </div>
+    </div>
+    </div>
+{% empty %}
+{% endfor %}

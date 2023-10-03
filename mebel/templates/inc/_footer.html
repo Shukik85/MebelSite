@@ -1,0 +1,51 @@
+{% load static %}
+{% for item in Contact.all %}
+<footer class="container-fluid bg-dark p-0 m-0" id="footer" >
+    <div class="row row-cols-lg-3 g-3 w-80 p-5">
+        <div class="col-4 justify-content-start">
+            <div class="">
+                {{item.adress}}
+            </div>
+            <div>
+                <a class="text-decoration-none" href="tel:{{item.phone}}">{{item.phone}}</a>
+            </div>
+            <div>
+                <a class="text-decoration-none" href="mailto:{{item.mail}}">{{item.mail}}</a>
+            </div>
+            <div>
+                <a class="btn btn-outline-success" href="{{item.url}}" target="_blank">
+                    <img alt="Telegram" src="{% static 'home/img/mingcutetelegramfill.svg'%}" />
+                    {{item.url}}
+                </a>
+            </div>
+        </div>
+        <div class="col-4 d-flex justify-content-center">
+            <a href="{%url 'home'%}">
+                <img alt="" src="{% static 'home/img/logo-1@2x (2).png'%}" width="120" />
+            </a>
+        </div>
+        <div class="col-4  d-flex justify-content-end">
+            <ul class="navbar-nav text-end" style="font: Open Sans;">
+                <li class="nav-item">
+                    <a class="nav-link p-0 active" aria-current="page" href="{% url 'home'%}">Главная</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link p-0" href="{% url 'home'%}#info">О компании</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link p-0" href="{% url "works" %}">Наши работы</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link p-0" href="#/">Отзывы</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link p-0" href="#accordeon">Статьи</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link p-0" href="#footer">Контакты</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</footer>
+{% endfor %}

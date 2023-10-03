@@ -1,0 +1,27 @@
+{% load static %}
+<div class="container-fluid p-0 m-0"  id='accordeon'>
+    <div class="card-body w-80 p-5">
+        <h2 class="card-title pb-4 text-uppercase" style="font-family: Garamond;">Вопросы и ответы</h2>
+        <div class="pt-4 m-auto accordion  accordion-flush" id="accordionFlushExample"
+            style="font-family: Open Sans;">
+            {% for item in Home.accordeon.all reversed %}
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#flush-collapse{{forloop.counter0}}" aria-expanded="false"
+                        aria-controls="flush-collapse{{forloop.counter0}}">
+                        <h4>{{item.title}}</h4>
+                    </button>
+                </div>
+                <div id="flush-collapse{{forloop.counter0}}" class="accordion-collapse collapse"
+                    data-bs-parent="#accordionFlushExample">
+                    <div class="accordion-body">
+                        <h5>{% autoescape off %}{{item.description}}{% endautoescape %}</h5>
+                    </div>
+                </div>
+            {% empty %}
+            <h2>Вопросы не загрузились</h2>
+            {% endfor %}
+        </div>
+    </div>
+</div>

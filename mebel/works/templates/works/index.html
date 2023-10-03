@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{block.super}}
+{% endblock %}
+		
+{% block nav %}
+{% include 'inc/_nav.html'%}
+{% endblock nav %}
+
+{% block paginator %}
+    {% if page_obj.has_other_pages %}
+    <nav class="d-flex justify-content-center" aria-label="...">
+        <ul class="pagination m-0 mt-3">
+            {% if page_obj.has_previous %}
+            <li class="page-item">
+                <a class="page-link" href="?page={{page_obj.previous_page_number}}">Пред...</a>
+            </li>
+            {% endif %}
+            {% for p in page_obj.paginator.page_range %}
+                {% if page_obj.number == p %}
+                <li class="page-item active" aria-current="page">
+                    <a class="page-link" href="?page={{p}}">{{ p }}<span class="sr-only"></span></a>
+                </li>
+                {% elif p > page_obj.number|add:-3 and p < page_obj.number|add:3 %}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{p}}">{{p}}</a>
+                </li>
+                {% endif %}
+            {% endfor %}            
+            {% if page_obj.has_next %}
+            <li class="page-item">
+                <a class="page-link" href="?page={{page_obj.next_page_number}}">След...</a>
+            </li>
+            {% endif %}
+        </ul>
+    </nav>
+    {% endif %}
+{% endblock paginator %}
+
+{% block sidebar %}
+<div class="container-fluid justify-content-center p-0 m-0">
+    <div class="card-body row row-col-lg-2 w-80 pt-3 p-5">
+    {% include 'works/inc/_sidebar.html' %}
+    {% endblock %}
+
+    {% block content %}
+    {% include 'works/inc/_content.html'%}
+    </div>
+</div>
+{% endblock %}
+			
+{% block footer %}
+{% include 'inc/_footer.html'%}
+{% endblock footer %}

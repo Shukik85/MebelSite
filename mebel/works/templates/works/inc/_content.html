@@ -1,0 +1,60 @@
+{% load static%}
+<div class="col-md-10">
+    {% for item in Works %}
+    <div class="card p-3">
+        <div class="card-header ">
+            Категория: <a href='{{item.category.get_absolute_url}}'>{{item.category.name}}</a>
+        </div>
+        <div class="media">
+            <div class="media-photo m-3">
+                <div id="carouselExampleIndicators" class="carousel slide">
+                    <div class="carousel-indicators">
+                        {% for photo in item.get_photo %}
+                        <button type="button" data-bs-target="#carouselExampleIndicators"
+                            data-bs-slide-to="{{forloop.counter0}}" {% if forloop.counter0 == 0 %}class="active" 
+                            aria-current="true" {% endif %} aria-label="Slide {{forloop.counter0}}">
+                        </button>
+                        {% empty %}
+                        {% endfor %}
+                    </div>
+                    <div class="carousel-inner">
+                        {% for photo in item.get_photo %}
+                        <div class="carousel-item {% if forloop.counter0 == 0 %}active{% endif %}" style="height: 40vh">
+                            <img src={{photo}} class="d-block object-fit-scale mx-auto" alt="...">
+                        </div>
+                        {% empty %}
+                        <div class="carousel-inner">
+                            <div class="carousel-item">
+                                <img src="{% static " works/empty/empty.png" %}" class="d-block w-100" alt="empty">
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+                        data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+                        data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+            </div>
+            <div class="media-body">
+                <div class="card-body">
+                    <h4>{{item.name}}</h4>
+                    <p class="card-text">{% autoescape off %}
+                    {{item.description|truncatewords:40|linebreaks}}
+                    {% endautoescape %}</p>
+                    <a href="{{item.get_absolute_url}}" class="btn btn-primary">Read more...</a>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer text-body-secondary">
+            {{item.created_at|date:'Y-m-d H:i'}}
+        </div>
+    </div>
+    {% endfor %}
+</div>

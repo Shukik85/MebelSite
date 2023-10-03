@@ -1,0 +1,24 @@
+{% load static %}
+<div class="container-fluid p-0 m-0" id="made">
+    <div class="card-body w-80 p-5">
+        <div class="row card-title p-0">
+            <h2 class="card-title pb-4 text-uppercase" style="font-family: Garamond;">
+                КАК СОЗДАЮТСЯ НАШИ ИЗДЕЛИЯ
+            </h2>
+        </div>
+        <div class="pt-4 row row-cols-lg-4 g-5 justify-content-center" style="font-family: Open Sans;">
+        {% for item in Home.made.all reversed %}
+            <div class="made card flex-column border-0">
+                <img class="card-img-top" alt=""
+                    src="{{item.img.url}}" />
+                <div class="card-body text-bg-light">
+                    <h4 class="card-title ps-2" style="font-family: Open Sans;">
+                    {% autoescape off %}{{item.description}}{% endautoescape %}
+                    </h4>
+                </div>
+            </div>
+        {% empty %}
+        {% endfor %}
+        </div>
+    </div>
+</div>
