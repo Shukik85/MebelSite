@@ -1,0 +1,14 @@
+*.pyc
+*.log
+__pycache__
+/mebel/
+.vscode/
+*.history
+/reports/
+/htmlcov/
+*.ipynb
+*.env
+.env/
+nohup.out
+/postgresql/
+tmp
