@@ -18,12 +18,16 @@ RUN mkdir /home/app/web/staticfiles
 RUN mkdir /home/app/web/mediafiles
 WORKDIR /home/app/web
 
+# set environment variables
+ENV PYTHONDONTWRITEBYTECODE 1
+ENV PYTHONUNBUFFERED 1
+
 # copy project
 COPY . .
 
 # install system dependencies
 RUN apk update
-RUN apk add gmp-dev
+RUN apk add postgresql-dev gcc python3-dev musl-dev
 RUN apk add --upgrade netcat-openbsd
 
 # install python dependencies

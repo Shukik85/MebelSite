@@ -12,14 +12,14 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data/
     env_file:
-      - ./.env
+      - ./.env.db
   web:
     image: shukik/mebel:latest
     depends_on:
       - db
     restart: always
     env_file:
-      - ./.env.db
+      - ./.env
     volumes:
       - static_volume:/home/app/web/staticfiles
       - media_volume:/home/app/web/mediafiles
