@@ -1,0 +1,11 @@
+{% load news_tags %}
+
+<div class="col-md-2">
+    <div class="list-group">
+        {% for category in categoryes %}
+            <a href="{{category.get_absolute_url}}" class="list-group-item d-flex justify-content-between align-items-center">
+                {{category.title}}<span class="badge bg-secondary rounded-pill" style="width: 30px; color: white;">{{category.cnt}}</span>
+            </a>
+        {% endfor %}
+    </div>
+</div>

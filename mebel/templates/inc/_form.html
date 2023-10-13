@@ -1,32 +1,31 @@
 {% load static %}
-<div class="container-fluid p-0 m-0 text-bg-light" >
-    <div class="row row-cols-2 g-3 w-80 p-5">
+{% if form %}
+<div class="container-fluid p-0 m-0" id="form" >
+    <div class="row row-cols-2 w-80 m-0 p-5">
         <img class="col-4" alt="" src="{% static 'home/img/manworkinginawoodengravingworkshop-1-1@2x.png'%}" />
-        <form class="row col-8 needs-validation" novalidate>
+        <form class="col-8 needs-validation" enctype="multipart/form-data" action="{% url "proposal:create" %}" method="post">
+            {% csrf_token %}
             <h2 class="card-title text-uppercase" style="font-family: Garamond;">Оставить заявку</h2>
             <div class="mb-3">
-                <label for="exampleFormControlPhone" class="form-label">Ваш номер телефона:</label>
-                <input type="tel" class="form-control"  id="exampleFormControlPhone" name="phone" placeholder="+7(987)654-32-10" minlength="10" maxlength="20" required />
-                <div class="invalid-feedback">
-                    Введите ваш номер телефона!
-                </div>
+                <label for="exampleFormControlPhone" class="form-label">Ваше имя:</label>
+                {{form.name}}
             </div>
             <div class="mb-3">
-                <label for="exampleFormControlEmail" class="form-label">Ваш email:</label>
-                <input type="email" class="form-control" id="exampleFormControlEmail" name="email"
-                    placeholder="name@example.com">
+                <label for="exampleFormControlPhone" class="form-label">Ваш номер телефона:</label>
+                {{form.phone}}                
+            </div>
+            <div class="mb-3">
+                <label for="exampleFormControlEmail" class="form-label">Ваш e-mail:</label>
+                {{form.mail}}
             </div>
             <div class="mb-3">
                 <label for="exampleFormControlTextarea" class="form-label">Ваше сообщение:</label>
-                <textarea class="form-control" id="exampleFormControlTextarea" rows="3" name="message" minlength="20" required></textarea>
-                <div class="invalid-feedback">
-                    Введите ваше сообщение минимум 20 знаков!
-                </div>
+                {{form.message}}
             </div>
             <div class="mb-3">
-                <label for="formFileMultiple" class="form-label">Загрузите изображение изделия, ваши наработки
-                    или дизайн-проект:</label>
-                <input class="form-control" type="file" id="formFileMultiple" name="files" multiple>
+                <label for="formFile" class="form-label">Загрузите архив с файлами (изображение изделия, ваши наработки
+                    или дизайн-проект):</label>
+                {{form.files}}
             </div>
             <div>
                 <button class="col-6 btn btn-primary" type="submit">Отправить</button>
@@ -34,3 +33,4 @@
         </form>
     </div>
 </div>
+{% endif %}

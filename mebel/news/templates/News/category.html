@@ -1,0 +1,14 @@
+{% extends 'news/base.html' %}
+
+{% block title %}
+{{ title }} :: {{block.super}}
+{% comment %} {{ category.title }} :: {{block.super}} {% endcomment %}
+{% endblock %}
+
+{% block sidebar %}
+{% include 'news/inc/_sidebar.html' %}
+{% endblock %}
+
+{% block content %}
+{% include 'news/inc/_content.html'%}
+{% endblock %}

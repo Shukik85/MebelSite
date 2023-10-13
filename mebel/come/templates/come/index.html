@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{block.super}}
+{% endblock %}
+
+{% block yandex_maps %}
+{% include "come/inc/_yndex_maps.html" %}
+{% endblock yandex_maps %}
+		
+{% block nav %}
+{% include 'inc/_nav.html'%}
+{% endblock nav %}
+
+{% block offer %}
+{% include 'inc/_offer.html' %}
+{% endblock %}
+
+{% block content %}
+{% include "come/inc/_map.html" %}
+{% endblock content %}
+
+{% block form %}
+{% include 'inc/_form.html'%} 
+{% endblock %}

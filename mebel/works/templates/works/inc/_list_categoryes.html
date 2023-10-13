@@ -1,9 +1,9 @@
 {% load works_tags %}
 {% load static%}
 
-<div class="card col-lg-2 p-3">
+<div class="card col-md-2 p-3">
     <div class="list-group">
-        <div class='card-header'>Категории</div>
+        <a class='btn card-header' href="{% url "works:works" %}">Категории</a>
         {% for category in categoryes %}
             <a href="{{category.get_absolute_url}}" class="list-group-item border-light border-opacity-25">
                 {{category.name}}<span class="badge bg-secondary float-end">{{category.cnt}}</span>

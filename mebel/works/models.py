@@ -48,7 +48,7 @@ class Categoryes(models.Model):
         ordering = ["name"]
 
     def get_absolute_url(self):
-        return reverse_lazy("by_category", kwargs={"pk": self.pk})
+        return reverse_lazy("works:by_category", kwargs={"pk": self.pk})
 
 
 class Works(models.Model):
@@ -98,7 +98,7 @@ class Works(models.Model):
         return f"{self.name}"
 
     def get_absolute_url(self):
-        return reverse_lazy("work_view", kwargs={"pk": self.pk})
+        return reverse_lazy("works:work_view", kwargs={"pk": self.pk})
 
     class Meta:
         verbose_name = "Выполненые работы"
