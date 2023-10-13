@@ -17,9 +17,8 @@ from dotenv import load_dotenv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
- 
-load_dotenv()
 
+load_dotenv()
 
 
 # Quick-start development settings - unsuitable for production
@@ -33,7 +32,7 @@ DEBUG = bool(os.getenv("DEBUG", default=0))
 
 # 'DJANGO_ALLOWED_HOSTS' should be a single string of hosts with a space between each.
 # For example: 'DJANGO_ALLOWED_HOSTS=localhost 127.0.0.1 [::1]'
-ALLOWED_HOSTS = os.getenv("DJANGO_ALLOWED_HOSTS").split(' ')
+ALLOWED_HOSTS = os.getenv("DJANGO_ALLOWED_HOSTS").split(" ")
 
 # Application definition
 
@@ -99,7 +98,7 @@ DATABASES = {
         "PASSWORD": os.getenv("SQL_PASSWORD"),
         "HOST": os.getenv("SQL_HOST"),
         "PORT": os.getenv("SQL_PORT"),
-        "CHARSET": os.getenv("SQL_UTF")
+        "CHARSET": os.getenv("SQL_UTF"),
     }
 }
 
