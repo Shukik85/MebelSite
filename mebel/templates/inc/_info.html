@@ -1,33 +1,30 @@
 {% load static%}
-<div class="container-fluid p-0 m-0 bg-white text-dark" id='info'>
+<div class="container-fluid p-0 m-0  text-bg-light" id='info'>
     <div class="card-body w-80 p-5">
-        <h1 class="card-title pb-4 text-uppercase" style="font-family: Garamond;">о компании</h1>
-        <p class="card-text" style="font: Open Sans;">
-            Компания «Other» специализируется на изготовлении мебели из
-            массива ценных пород древесины с 2004 года. Накопленный опыт и
-            современное оборудование позволяют нашей столярной мастерской
-            выполнять индивидуальные авторские заказы, соответствующие
-            европейским стандартам качества.
-        </p>
         <div class="d-flex flex-wrap" style="font: Open Sans;">
+        {% for item in Home.info.all reversed %}
             <div class="card-title p-0 pt-4 pe-4">
+                {% if item.title == "О нас" %}
+                <h1 class="card-title pb-4 text-uppercase" style="font-family: Garamond;">
+                    {{item.title}}
+                </h1>
+                {% else %}
                 <h2>
-                    <b>19</b>
+                    <b>{{item.title}}</b>
                 </h2>
-                <p class="card-text">лет работы</p>
+                {% endif %}
+                <p class="card-text">
+                    {% autoescape off %}{{item.description}}{% endautoescape %}
+                </p>
             </div>
-            <div class="card-title p-0 pt-4 pe-4">
-                <h2>
-                    <b>3642</b>
-                </h2>
-                <p class="card-text">выполненных проекта</p>
-            </div>
+        {% empty %}
             <div class="card-title p-0 pt-4">
                 <h2>
-                    <b>20</b>
+                    <b>Ошибка загрузки</b>
                 </h2>
-                <p class="card-text">городов России</p>
+                <p class="card-text">Смотри <code>_info.html</code></p>
             </div>
+        {% endfor %}
             <a class="align-self-end ms-auto px-2 text-decoration-none btn btn-outline-dark"
                 style="font: bold 16px Open Sans;">
                 <b>Подробнее о нас</b>

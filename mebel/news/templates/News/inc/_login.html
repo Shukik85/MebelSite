@@ -1,0 +1,8 @@
+<div class="col-md-8">
+    <form action="{% url 'register:Login' %}" enctype="multipart/form-data" method="post">
+        {% csrf_token %}
+        {{form.as_p}}
+        <button type="submit" class="btn btn-primary btn-block">Войти</button>
+        {{form.none_field.errors}}
+    </form>
+</div>

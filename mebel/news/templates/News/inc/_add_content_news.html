@@ -1,0 +1,8 @@
+<div class="col-md-8">
+    <form action="{% url 'news:Add_news' %}" enctype="multipart/form-data" method="post">
+        {% csrf_token %}
+        {{form.as_p}}
+        <button type="submit" class="btn btn-primary btn-block">Добавить</button>
+        {{form.none_field.errors}}
+    </form>
+</div>

@@ -1,7 +1,7 @@
 {% load static %}
 		<nav class="navbar navbar-expand-lg bg-dark">
 			<div class="container-fluid text-center">
-				<a class="navbar-brand" href="{%url 'home' %}">
+				<a class="navbar-brand" href="{%url 'home:home' %}">
 					<img class="navbar-brand" alt="" src="{% static 'home/img/logo-1@2x (2).png'%}" width="120" />
 				</a>
 				<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -12,28 +12,25 @@
 				<div class="collapse navbar-collapse" id="navbarSupportedContent">
 					<ul class="navbar-nav ms-auto mb-2" style="font: Open Sans;">
 						<li class="nav-item">
-							<a class="nav-link active" aria-current="page" href="{%url 'home' %}">Главная</a>
+							<a class="nav-link active" aria-current="page" href="{% url "home:home" %}">Главная</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="#group-parent1">О компании</a>
+							<a class="nav-link" href="#/">О компании</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="{% url "works" %}">Наши работы</a>
+							<a class="nav-link active" href="{% url "works:works" %}">Наши работы</a>
 						</li>
 						<li class="nav-item">
 							<a class="nav-link" href="#/">Отзывы</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="#/">Статьи</a>
+							<a class="nav-link active" href="{% url "news:News" %}">Статьи</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="#footer">Контакты</a>
+							<a class="nav-link active" href="{% url "come:come" %}">Контакты</a>
 						</li>
 						<li class="nav-item">
-							<a class="btn btn-outline-success" href="https://t.me/shukik85" target="_blank">
-								<img alt="Telegram" src="{% static 'home/img/mingcutetelegramfill.svg'%}" />
-								+7(922)6672326
-							</a>
+							<a class="nav-link active" href="/admin">Админ</a>
 						</li>
 					</ul>
 				</div>

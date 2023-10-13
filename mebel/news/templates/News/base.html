@@ -1,0 +1,69 @@
+<!doctype html>
+{% load static %}
+{% load cache %}
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static 'home/css/custom.min.css'%}" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open Sans:wght@400;600;700&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Garamond:wght@400&display=swap" />
+    <title>{% block title %}Новости{% endblock %}</title>
+  </head>
+  <body class="d-flex justify-content-center" data-bs-theme="dark">
+    <div class="container-xxl w-100 p-0 m-0">
+    {% include 'news/inc/_nav.html'%}   
+    <div class="container-fluid p-5">
+            {% if messages %}
+            {% for message in messages %}
+              {% if message.tags == 'error' %}
+              <div class="alert alert-danger" role="alert">
+                {{ message }}
+              </div>
+              {% else %}
+              <div class="alert alert-{{message.tags}}" role="alert">
+                {{ message }}
+              </div>
+              {% endif %}
+            {% endfor %}
+            {% endif %}
+        <h1>{{title}}</h1>
+        <div class="row ">
+          {% comment %} {% cache 500 sidebar %} {% endcomment %}
+            {% block sidebar %}SIDEBAR{% endblock %}
+          {% comment %} {% endcache %} {% endcomment %}
+            {% block content %}CONTENT{% endblock %}			
+        </div>
+        {% if page_obj.has_other_pages %}
+        <nav class="d-flex justify-content-center" aria-label="...">
+          <ul class="pagination">
+            {% if page_obj.has_previous %}
+            <li class="page-item">
+              <a class="page-link" href="?page={{page_obj.previous_page_number}}">Пред...</a>
+            </li>
+            {% endif %}
+            {% for p in page_obj.paginator.page_range %}
+            {% if page_obj.number == p %}
+            <li class="page-item active" aria-current="page">
+              <a class="page-link" href="?page={{p}}">{{ p }}<span class="sr-only"></span></a>
+            </li>
+            {% elif p > page_obj.number|add:-3 and p < page_obj.number|add:3 %}
+            <li class="page-item">
+              <a class="page-link" href="?page={{p}}">{{p}}</a>
+            </li>
+            {% endif %}
+            {% endfor %}            
+            {% if page_obj.has_next %}
+            <li class="page-item">
+              <a class="page-link" href="?page={{page_obj.next_page_number}}">След...</a>
+            </li>
+            {% endif %}
+          </ul>
+        </nav>
+        {% endif %}
+    </div>
+    <script src="{% static 'home/bootstrap/dist/js/bootstrap.bundle.min.js'%}" crossorigin="anonymous"></script>
+  </div>
+  </body>
+</html>
+  

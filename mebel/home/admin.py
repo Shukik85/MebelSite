@@ -2,7 +2,7 @@ from django import forms
 from django.contrib import admin
 from ckeditor_uploader.widgets import CKEditorUploadingWidget
 from django.utils.safestring import mark_safe
-from home.models import Card, Contacts, Home
+from home.models import Card, Home
 
 
 class HomeAdminForm(forms.ModelForm):
@@ -98,27 +98,3 @@ class CardHomeAdmin(admin.ModelAdmin):
             return "Фото нет"
 
     get_img.short_description = "Минитюра"
-
-
-@admin.register(Contacts)
-class ContactsAdmin(admin.ModelAdmin):
-    list_display = (
-        "id",
-        "is_active",
-        "name",
-        "adress",
-        "phone",
-        "mail",
-        "url",
-    )
-    list_display_links = ("name",)
-    search_fields = ("name",)
-    list_filter = ("is_active",)
-    fields = (
-        "is_active",
-        "name",
-        "adress",
-        "phone",
-        "mail",
-        "url",
-    )

@@ -1,7 +1,7 @@
-from django.shortcuts import render
-from django.views.generic import CreateView, DetailView, ListView
-
-from home.models import Contacts, Home
+from django.views.generic import ListView
+from come.models import Contacts
+from home.models import Home
+from proposal.forms import ProposalForm
 
 
 class HomePage(ListView):
@@ -11,6 +11,7 @@ class HomePage(ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        context["form"] = ProposalForm
         context["Contact"] = Contacts.objects.all().filter(is_active=True)
         context["title"] = "Главная"
         return context

@@ -10,6 +10,7 @@
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open Sans:wght@400;600;700&display=swap" />
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Garamond:wght@400&display=swap" />
 	<title>{% block title %}WoodMaster : {{title}}{% endblock %}</title>
+	{% block yandex_maps %}{% endblock yandex_maps %}
 </head>
 
 <body class="d-flex justify-content-center" data-bs-theme="dark">
@@ -17,6 +18,9 @@
 		
 			{% block nav %}
 			{% endblock nav %}
+		
+			{% block offer %}
+			{% endblock %}
 
 			{% block paginator %}
 			{% endblock paginator %}
@@ -25,10 +29,7 @@
 			{% endblock sidebar %}
 
 			{% block content %}
-			{% endblock content %}
-		
-			{% block offer %}
-			{% endblock %} 
+			{% endblock content %} 
 			
 			{% block info %}
 			{% endblock %}

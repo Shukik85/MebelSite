@@ -19,10 +19,15 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
 
+
 urlpatterns = [
-    path("admin/", admin.site.urls),
-    path("", include("home.urls")),
-    path("works/", include("works.urls")),
+    path("admin/", admin.site.urls, name="admin"),
+    path("", include("home.urls", namespace="home")),
+    path("register/", include("register.urls", namespace="register")),
+    path("news/", include("news.urls", namespace="news")),
+    path("proposal/", include("proposal.urls", namespace="proposal")),
+    path("come/", include("come.urls", namespace="come")),
+    path("works/", include("works.urls", namespace="works")),
     path("ckeditor/", include("ckeditor_uploader.urls")),
 ]
 

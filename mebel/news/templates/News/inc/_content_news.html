@@ -1,0 +1,26 @@
+
+<div class="col-md-8 mw-75">
+    <div class="card mb-3 pl-0">
+      <div class="card-header ">
+          Категория: <a href='{{news.category.get_absolute_url}}'>{{news.category.title}}</a>
+      </div>
+        <div class="media">
+            <div class="media-photo m-3">
+                {% if news.photo %}
+                    <img src="{{ news.photo.url }}" alt="" width="350" class="mr-3">
+                {% else %}
+                    <img src="https://picsum.photos/id/1060/350/235/?blur=2" alt="" width="350" class="mr-3">
+                {% endif %}
+            </div>
+            <div class="media-body">
+                <div class="card-body">
+                    <h4>{{news.title}}</h4>
+                    <p class="card-text">{{news.content|linebreaks}}</p>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer text-body-secondary">
+            {{news.created_at|date:'Y-m-d H:i'}}<br>Автор: {{news.author}}
+        </div>
+    </div>
+</div>

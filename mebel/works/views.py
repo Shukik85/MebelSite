@@ -1,11 +1,11 @@
 from django.views.generic import DetailView, ListView
-from home.models import Contacts
+from come.models import Contacts
 from works.models import Categoryes, Works
 
 
 class WorksPage(ListView):
     model = Works
-    paginate_by = 1
+    paginate_by = 5
     context_object_name = "Works"
     template_name = "works/index.html"
 
@@ -21,7 +21,7 @@ class WorksByCategory(ListView):
     context_object_name = "Works"
     template_name = "Works/index.html"
     allow_empty = False
-    paginate_by = 1
+    paginate_by = 5
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

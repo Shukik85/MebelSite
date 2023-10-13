@@ -1,0 +1,31 @@
+{% load static %}
+{% for item in Contact.all %}
+    <div class="d-flex flex-row justify-content-between p-5  text-bg-light">
+        <div class="col-md-4">
+            <div>
+                Наш телефон:<br>
+                <a class="text-decoration-none" href="tel:{{item.phone}}">{{item.phone}}</a>
+            </div>
+            <div>
+                Наш e-mail:<br>
+                <a class="text-decoration-none" href="mailto:{{item.mail}}">{{item.mail}}</a>
+            </div>
+            <div>
+                Наш телеграмм:<br>
+                <a class="text-decoration-none" href="{{item.url}}" target="_blank">
+                    {{item.url}}
+                </a>
+            </div>
+        </div>
+        <div class="col-md-8 text-center">
+            <h5 class="text-uppercase">Для личной встречи, ждем вас по адресу</h5><br>            
+            <div id="adress" data-type="{{item.adress}}">
+                {{item.adress}}
+            </div><br>
+            <i>Заранее предупредите нас о своем визите!</i>
+        </div>
+    </div>
+{% endfor %}
+    <div class="card m-0 p-0">
+        <div id="map" style="height: 50vh"></div>
+    </div>

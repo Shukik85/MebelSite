@@ -1,0 +1,13 @@
+{% extends 'news/base.html' %}
+
+{% block title %}
+{{ news.title }} :: {{block.super}}
+{% endblock %}
+
+{% block sidebar %}
+{% include 'news/inc/_sidebar.html' %}
+{% endblock %}
+
+{% block content %}
+{% include 'news/inc/_content_news.html'%}
+{% endblock %}
