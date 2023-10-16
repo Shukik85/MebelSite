@@ -34,6 +34,9 @@ DEBUG = bool(os.getenv("DEBUG", default=0))
 # For example: 'DJANGO_ALLOWED_HOSTS=localhost 127.0.0.1 [::1]'
 ALLOWED_HOSTS = os.getenv("DJANGO_ALLOWED_HOSTS").split(" ")
 
+CSRF_COOKIE_DOMAIN = 'xn--d1abwhbbcfddio.xn--p1ai'
+CSRF_TRUSTED_ORIGINS = ["http://nginx:80", "https://nginx:443"]
+
 # Application definition
 
 INSTALLED_APPS = [
