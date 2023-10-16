@@ -7,6 +7,7 @@ class News(models.Model):
     title = models.CharField(max_length=150, verbose_name="заголовок")
     author = models.ForeignKey(
         to=User,
+        default=1,
         on_delete=models.CASCADE,
         editable=False,  # Запретить изменения чтобы убрать из ручного редактирования
     )

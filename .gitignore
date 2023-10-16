@@ -6,3 +6,8 @@ __pycache
 .env
 .env.db
 */ssl/
+mediafiles/
+message/
+user_cabinet/
+staticfiles/
+*_initial.py

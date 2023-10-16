@@ -4,7 +4,10 @@ from django.db import models
 class Clients(models.Model):
     created_at = models.DateTimeField(auto_now_add=True, verbose_name="Создано")
     name = models.CharField(
-        max_length=50, verbose_name="Имя заказчика", blank=False, null=True
+        verbose_name="Имя",
+        blank=False,
+        null=True,
+        unique=True,
     )
     adress = models.CharField(
         max_length=50,

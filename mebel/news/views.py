@@ -1,6 +1,7 @@
 from django.views.generic import CreateView, DetailView, ListView
 from news.forms import NewsForm
 from news.models import News, Category
+from django.contrib.auth.mixins import LoginRequiredMixin
 from news.utils import MyMixin
 
 
@@ -9,7 +10,7 @@ class HomeNews(ListView, MyMixin):
     context_object_name = "news"
     template_name = "News/index.html"
     extra_context = {"title": "Главная"}
-    paginate_by = 2
+    paginate_by = 5
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -25,7 +26,7 @@ class NewsByCategory(ListView):
     context_object_name = "news"
     template_name = "News/category.html"
     allow_empty = False
-    paginate_by = 2
+    paginate_by = 5
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -48,8 +49,13 @@ class ViewNews(DetailView):
         return context
 
 
-class AddNews(CreateView):
+class AddNews(LoginRequiredMixin, CreateView):
+    model = News
     form_class = NewsForm
     template_name = "News/add_news.html"
     extra_context = {"title": "Добавить новость"}
     login_url = "admin/"
+
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)

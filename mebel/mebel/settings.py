@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     "ckeditor_uploader",
     "home",
     "news",
+    "message",
     "register",
     "come",
     "works",
@@ -62,7 +63,6 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
-    "debug_toolbar.middleware.DebugToolbarMiddleware",
 ]
 
 ROOT_URLCONF = "mebel.urls"
@@ -151,6 +151,13 @@ CACHES = {
         "LOCATION": os.path.join(BASE_DIR, "django_cache"),
     }
 }
+
+EMAIL_HOST = "pop3.plotnikovknows.ru"
+EMAIL_PORT = 110
+EMAIL_HOST_USER = "alexandr@plotnikovknows.ru"
+EMAIL_HOST_PASSWORD = "Novotr1985"
+EMAIL_USE_TLS = True
+DEFAULT_FROM_EMAIL = "alexandr@plotnikovknows.ru"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
