@@ -1,10 +1,6 @@
-<nav class="navbar navbar-expand-lg  bg-dark">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="{% url 'home:home' %}">Главная</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
+{% include "inc/_nav.html" %}
+<nav class="navbar bg-dark">
+    <div class="container-fluid justify-content-beetwin">
             <ul class="navbar-nav">
                 {% if request.user.is_authenticated %}
                 <li class="nav-item">
@@ -12,7 +8,6 @@
                 </li>
                 {% endif %}
             </ul>
-        </div>
         <span class="navbar-text mx-5 d-flex align-items-center">
             {% if request.user.is_authenticated %}
             <span class="px-2">Привет, {{ user.username }}</span> | <a class="px-2" href="{% url 'register:Logout' %}"> Выход </a>

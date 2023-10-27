@@ -8,3 +8,4 @@ __pycache
 */ssl/
 mediafiles/
 staticfiles/
+volumes/
