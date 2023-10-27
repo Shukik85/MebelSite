@@ -19,7 +19,7 @@ class WorksPage(ListView):
 class WorksByCategory(ListView):
     model = Works
     context_object_name = "Works"
-    template_name = "Works/index.html"
+    template_name = "works/index.html"
     allow_empty = False
     paginate_by = 5
 

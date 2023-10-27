@@ -14,7 +14,9 @@ services:
     env_file:
       - ./.env.db
   web:
-    image: shukik/mebel:latest
+    build:
+      context: "./mebel"
+      dockerfile: "DockerFile"
     depends_on:
       - db
     restart: always
@@ -29,10 +31,13 @@ services:
   nginx:
     build:
       context: "./nginx"
-      dockerfile: "Dockerfile"
+      dockerfile: "DockerFile"
     restart: always
     volumes:
       - static_volume:/home/app/web/staticfiles
       - media_volume:/home/app/web/mediafiles
+    ports:
+      - 80:80
+      - 443:443
     depends_on:
       - web

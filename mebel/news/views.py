@@ -8,7 +8,7 @@ from news.utils import MyMixin
 class HomeNews(ListView, MyMixin):
     model = News
     context_object_name = "news"
-    template_name = "News/index.html"
+    template_name = "news/index.html"
     extra_context = {"title": "Главная"}
     paginate_by = 5
 
@@ -24,7 +24,7 @@ class HomeNews(ListView, MyMixin):
 class NewsByCategory(ListView):
     model = News
     context_object_name = "news"
-    template_name = "News/category.html"
+    template_name = "news/category.html"
     allow_empty = False
     paginate_by = 5
 
@@ -41,7 +41,7 @@ class NewsByCategory(ListView):
 
 class ViewNews(DetailView):
     model = News
-    template_name = "News/news.html"
+    template_name = "news/news.html"
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -52,7 +52,7 @@ class ViewNews(DetailView):
 class AddNews(LoginRequiredMixin, CreateView):
     model = News
     form_class = NewsForm
-    template_name = "News/add_news.html"
+    template_name = "news/add_news.html"
     extra_context = {"title": "Добавить новость"}
     login_url = "admin/"
 

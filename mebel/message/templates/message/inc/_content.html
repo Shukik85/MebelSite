@@ -1,0 +1,27 @@
+{% load static%}
+<div class="col-md-10 ">
+    {% for item in Message %}
+    <div class="card p-3">
+        <div class="card-header ">
+            Категория: <a href='{{item.sender.get_absolute_url}}'>{{item.sender.name}}</a>
+        </div>
+        <div class="media row g-0">
+            <div class="media-photo col-md-4 m-3">
+                <img src={{item.get_photo.0}} width="320" alt="...">
+            </div>
+            <div class="media-body col-md-6">
+                <div class="card-body">
+                    <h4>{{item.name}}</h4>
+                    <p class="card-text">{% autoescape off %}
+                    {{item.description|truncatewords:40|linebreaks}}
+                    {% endautoescape %}</p>
+                    <a href="{{item.get_absolute_url}}" class="btn btn-primary">Read more...</a>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer text-body-secondary">
+            {{item.created_at|date:'Y-m-d H:i'}}
+        </div>
+    </div>
+    {% endfor %}
+</div>
